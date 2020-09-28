@@ -1,7 +1,9 @@
 class StaticController < ApplicationController
 
-    def about 
-        
+    def home 
+    end 
+
+    def about  
     end 
 
 end 

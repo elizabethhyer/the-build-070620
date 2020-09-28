@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_09_25_150502) do
   end
 
   create_table "projects", force: :cascade do |t|
+    t.string "name"
     t.string "technique_used"
     t.string "material_used"
     t.integer "discipline_id"

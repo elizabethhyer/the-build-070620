@@ -1,0 +1,5 @@
+<h1>Looking For Your Next Project?</h1>
+
+<% @projects.each do |p| %>
+    <li><%= link_to p.name, project_path(p) %></li>
+<% end %>

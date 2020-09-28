@@ -1,0 +1,9 @@
+<%= form_for @project do |f| %>
+    <%= f.label "Name: " %>
+    <%= f.text_field :name %>
+    <%= f.label "Technique Used: " %>
+    <%= f.text_field :technique_used %>
+    <%= f.label "Material Used: " %>
+    <%= f.text_field :material_used %>
+    <%= f.submit %>
+<% end %>
