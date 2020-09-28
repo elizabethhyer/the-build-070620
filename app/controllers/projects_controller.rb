@@ -13,8 +13,13 @@ class ProjectsController < ApplicationController
     end 
 
     def create
-        @project = Project.create(project_params)
-        redirect_to project_path(@project)
+        @project = Project.new(project_params)
+        if @project.save
+            redirect_to project_path(@project)
+        else
+            @errors = @project.errors.full_messages
+            render :new 
+        end 
     end 
 
     def edit
