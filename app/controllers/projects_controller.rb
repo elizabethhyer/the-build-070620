@@ -18,9 +18,12 @@ class ProjectsController < ApplicationController
     end 
 
     def edit
+        @project = Project.find_by(id: params[:id])
     end 
 
     def update 
+        project = Project.find_by(id: params[:id])
+        project.update(project_params)
     end 
 
     def delete 
@@ -28,8 +31,8 @@ class ProjectsController < ApplicationController
 
     private 
 
-    def projects_params
-        params.require(:project).permit(:name, :technique_used, :material_used)
+    def project_params
+        params.require(:project).permit(:name, :technique_used, :material_used, :discipline_id)
     end
 
 end

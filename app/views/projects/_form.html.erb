@@ -5,5 +5,7 @@
     <%= f.text_field :technique_used %>
     <%= f.label "Material Used: " %>
     <%= f.text_field :material_used %>
+    <%= f.label "Discipline: " %>
+    <%= f.collection_select :discipline_id, Discipline.all, :id, :kind %>
     <%= f.submit %>
 <% end %>
