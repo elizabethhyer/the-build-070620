@@ -27,9 +27,13 @@ class ProjectsController < ApplicationController
     end 
 
     def update 
-        project = Project.find_by(id: params[:id])
-        project.update(project_params)
-        redirect_to project_path(project)
+        @project = Project.find_by(id: params[:id])
+        if @project.update(project_params)
+            redirect_to project_path(@project)
+        else
+            @errors = @project.errors.full_messages
+            render :edit 
+        end 
     end 
 
     def destroy
