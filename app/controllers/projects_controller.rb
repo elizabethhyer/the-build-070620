@@ -24,9 +24,13 @@ class ProjectsController < ApplicationController
     def update 
         project = Project.find_by(id: params[:id])
         project.update(project_params)
+        redirect_to project_path(project)
     end 
 
-    def delete 
+    def destroy
+        project = Project.find_by(id: params[:id])
+        project.destroy
+        redirect_to projects_path
     end 
 
     private 

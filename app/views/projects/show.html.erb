@@ -1,1 +1,4 @@
 <%= @project.name %>
+
+<%= button_to "Delete", @project, method: :delete, data: {confirm: "There is no recovery for projects thrown into the ether. Are you sure you would like to delete your project?"} %>
+
