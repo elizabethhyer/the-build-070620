@@ -11,7 +11,7 @@ class NotesController < ApplicationController
     def create
         @note = Note.new(note_params)
         if @note.save
-            redirect_to somewhere
+            redirect_to project_path(@project)
         else
             @errors = @project.errors.full_messages
             render :new 
@@ -25,7 +25,7 @@ class NotesController < ApplicationController
     def update
         @note = Note.find_by(id: params[:id])
         if @note.update(note_params)
-            redirect_to somewhere
+            redirect_to project_path(@project)
         else
             @errors = @project.errors.full_messages
             render :edit 
