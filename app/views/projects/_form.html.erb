@@ -11,5 +11,11 @@
     <%= f.text_field :material_used %>
     <%= f.label "Discipline: " %>
     <%= f.collection_select :discipline_id, Discipline.all, :id, :kind %>
-    <%= f.submit %>
+    <%= f.fields_for :notes do |n| %>
+        <%= n.label "Title: " %>
+        <%= n.text_field :title %>
+        <%= n.label "Content: " %>
+        <%= n.text_area :content %>
+    <% end %>
+    <%= f.submit "Create Project" %>
 <% end %>
