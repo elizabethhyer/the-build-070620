@@ -1,0 +1,5 @@
+<h1>All Disciplines</h1>
+
+<% @disciplines.each do |d| %>
+    <li><%= link_to d.kind, discipline_path(d) %></li>
+<% end %>

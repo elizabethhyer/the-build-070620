@@ -1,0 +1,5 @@
+<h1>All Projects in <%= @discipline.kind %></h1>
+
+<% @discipline.projects.each do |p| %>
+    <li><%= link_to p.name, project_path(p) %></li>
+<% end %>

@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
 
     def new 
         @project = Project.new
+        @project.notes.build 
     end 
 
     def create

@@ -1,6 +1,19 @@
 <h1><%= @project.name %></h1>
+<br />
 
-<%= link_to "Edit", edit_project_path(@project) %>
+<h2>Being Made By: <%= @project.notes.user %></h2>
+
+
+<h2>Notes on this project:</h2><br>
+
+<% @project.notes.each do |n| %>
+    <p><%= n.title %></p>
+    <p><%= n.content %></p>
+<% end %>
+
+<br><br>
+
+<%= link_to "Edit", edit_project_path(@project) %><br><br>
 
 <%= button_to "Delete", @project, method: :delete, data: {confirm: "There is no recovery for projects thrown into the ether. Are you sure you would like to delete your project?"} %>
 

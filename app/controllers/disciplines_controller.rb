@@ -1,7 +1,7 @@
 class DisciplinesController < ApplicationController
 
     def index
-        @disciplines = Dinscipline.all 
+        @disciplines = Discipline.all 
     end 
 
     def show 

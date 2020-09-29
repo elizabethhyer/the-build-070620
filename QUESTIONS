@@ -1,6 +1,6 @@
 In notes controller - I want new notes to go to project show page, how do I add in the association so that project_path(project) will take me to the correct note's project?
+how to delete all from db
 
 DO
-seed file
 Nav bar
 CSS
