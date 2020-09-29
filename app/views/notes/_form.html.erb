@@ -2,5 +2,12 @@
     <li><%= m %></li>
 <% end %>
 
-title 
-content
+<%= form_for @project do |f| %>
+    <%= f.label "Title: " %>
+    <%= f.text_field :title %>
+    <%= f.label "Content: " %>
+    <%= f.text_area :content %>
+    <%= f.label "Project: " %>
+    <%= f.collection_select :project_id, Project.all, :id, :name %>
+    <%= f.submit %>
+<% end %>
