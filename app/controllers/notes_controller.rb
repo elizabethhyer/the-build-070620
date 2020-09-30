@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
 
-    before_action :set_note, only: [:create, :update]
+    before_action :set_note, only: [:create, :update, :destroy]
 
     def show 
         set_project
@@ -23,6 +23,7 @@ class NotesController < ApplicationController
     end 
 
     def edit 
+        set_project
         @note = Note.find_by(id: params[:id])
     end 
 
@@ -33,6 +34,11 @@ class NotesController < ApplicationController
             @errors = @project.errors.full_messages
             render :edit 
         end 
+    end 
+
+    def destroy
+        @note.destroy
+        redirect_to projects_path
     end 
 
     private 

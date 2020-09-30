@@ -7,7 +7,7 @@
 <h2>Notes on this project:</h2><br>
 
 <% @project.notes.each do |n| %>
-    <h4><%= n.title %></h4>
+    <h4><%= link_to n.title, project_note_path(@project, n) %></h4>
     <p><%= n.content %></p>
 <% end %>
 
