@@ -2,8 +2,9 @@ class NotesController < ApplicationController
 
     before_action :set_note, only: [:create, :update]
 
-    def index 
-        @notes = Note.all
+    def show 
+        set_project
+        @note = Note.find_by(id: params[:id])
     end 
 
     def new 

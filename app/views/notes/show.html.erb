@@ -1,0 +1,7 @@
+<h1><%= @note.title %></h1>
+
+<p><%= @note.content %></p>
+
+<%= link_to "Edit", edit_project_notes_path(@project, @note) %><br><br>
+
+<%= button_to "Delete", @note, method: :delete, data: {confirm: "There is no recovery for notes thrown into the ether. Are you sure you would like to delete your note?"} %>
