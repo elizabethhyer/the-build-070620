@@ -2,7 +2,7 @@
     <li><%= m %></li>
 <% end %>
 
-<%= form_for @note do |f| %>
+<%= form_for [@project, @note] do |f| %>
     <%= f.label "Title: " %>
     <%= f.text_field :title %>
     <%= f.label "Content: " %>
