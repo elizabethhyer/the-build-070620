@@ -9,13 +9,14 @@ class SessionsController < ApplicationController
         if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id 
             redirect_to projects_path
-        else 
-            @errors = @user.errors.full_messages
+        else
             render :new 
         end 
     end 
 
-    def logout
+    def destroy
+        session.clear 
+        redirect_to '/'
     end 
 
 end 
