@@ -5,7 +5,8 @@ class NotesController < ApplicationController
     end 
 
     def new
-        @note = Note.new
+        @project = Project.find_by(id: params[:project_id])
+        @note = @project.notes.build
     end 
 
     def create
