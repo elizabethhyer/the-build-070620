@@ -1,14 +1,6 @@
-In notes controller - I want new notes to go to project show page, how do I add in the association so that project_path(project) will take me to the correct note's project?
 how to save a project without choosing notes user  
-Do I need different layout for login/logout, or can I use if/else statements?
-Do I need locals for my _form partials?
-Getting nomethoderror form my notes form
 search by keyword
-getting all projects when i navigate to a specific discipline. I was not getting this error, like, an hour ago.
-the correct id number shows
-
 
 DO
-Nav bar
 CSS
 profile for users with all related projects

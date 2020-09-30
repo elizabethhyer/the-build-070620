@@ -1,20 +1,22 @@
 class NotesController < ApplicationController
 
+    before_action :set_note, only: [:create, :update]
+
     def index 
         @notes = Note.all
     end 
 
-    def new
-        @project = Project.find_by(id: params[:project_id])
-        @note = @project.notes.build
+    def new 
+        set_project
+        @note = @project.notes.build 
     end 
 
     def create
-        @note = Note.new(note_params)
+        @note.user = current_user
         if @note.save
             redirect_to project_path(@project)
         else
-            @errors = @project.errors.full_messages
+            @errors = @note.errors.full_messages
             render :new 
         end 
     end 
@@ -24,7 +26,6 @@ class NotesController < ApplicationController
     end 
 
     def update
-        @note = Note.find_by(id: params[:id])
         if @note.update(note_params)
             redirect_to project_path(@project)
         else
@@ -36,7 +37,16 @@ class NotesController < ApplicationController
     private 
 
     def note_params
-        params.require(:note).permit(:title, :content)
+        params.require(:note).permit(:title, :content, :project_id)
+    end 
+
+    def set_project
+        @project = Project.find_by(id: params[:project_id])
+    end 
+
+    def set_note 
+        set_project
+        @note = @project.notes.build(note_params)
     end 
 
 end
