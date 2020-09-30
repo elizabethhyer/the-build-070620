@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
 
-    before_action :set_note, only: [:create, :update, :destroy]
+    before_action :set_note, only: [:create, :update]
 
     def show 
         set_project
@@ -28,15 +28,17 @@ class NotesController < ApplicationController
     end 
 
     def update
+        @note.user = current_user
         if @note.update(note_params)
             redirect_to project_path(@project)
         else
-            @errors = @project.errors.full_messages
+            @errors = @note.errors.full_messages
             render :edit 
         end 
     end 
 
     def destroy
+        @note = Note.find_by(id: params[:id])
         @note.destroy
         redirect_to projects_path
     end 

@@ -3,8 +3,7 @@ class ProjectsController < ApplicationController
 
     def index
         if params[:user_id]
-            @projects = User.find_by(id: params[:user_id]).projects
-            
+            @projects = User.find_by(id: params[:user_id]).projects.distinct
         else 
             @projects = Project.all
         end 
