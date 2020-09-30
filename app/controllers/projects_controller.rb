@@ -2,12 +2,12 @@ class ProjectsController < ApplicationController
     before_action :set_project, except: [:new, :create, :index]
 
     def index
-        # if params[:discipline_id]
-        #     @projects = Discipline.find_by(id: params[:discipline_id]).projects
+        if params[:user_id]
+            @projects = User.find_by(id: params[:user_id]).projects
             
-        # else 
+        else 
             @projects = Project.all
-        # end 
+        end 
     end 
 
     def show
