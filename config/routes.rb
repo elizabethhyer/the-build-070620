@@ -3,9 +3,7 @@ Rails.application.routes.draw do
     resources :notes
   end 
   
-  resources :disciplines do 
-    resources :projects, only: [:index]
-  end 
+  resources :disciplines
   
   resources :users do 
     resources :projects 
