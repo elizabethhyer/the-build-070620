@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
 
-    before_action :set_note, only: [:create, :update]
+    before_action :set_note, only: [:create]
 
     def show 
         set_project
@@ -28,7 +28,8 @@ class NotesController < ApplicationController
     end 
 
     def update
-        @note.user = current_user
+        set_project
+        @note = Note.find_by(id: params[:id])
         if @note.update(note_params)
             redirect_to project_path(@project)
         else

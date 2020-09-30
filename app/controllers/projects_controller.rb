@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
     private 
 
     def project_params
-        params.require(:project).permit(:name, :technique_used, :material_used, :discipline_id, notes_attributes: [:title, :content, :id])
+        params.require(:project).permit(:name, :technique_used, :material_used, :discipline_id, notes_attributes: [:title, :content, :id, :user_id])
     end
 
     def set_project

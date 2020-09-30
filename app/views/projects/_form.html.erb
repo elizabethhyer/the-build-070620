@@ -13,6 +13,7 @@
     <%= f.collection_select :discipline_id, Discipline.all, :id, :kind %><br><br>
     <h2>Notes About This Project</h2>
     <%= f.fields_for :notes do |n| %>
+        <%= n.hidden_field :user_id, {value: current_user.id} %>
         <%= n.label "Title: " %>
         <%= n.text_field :title %>
         <%= n.label "Content: " %>

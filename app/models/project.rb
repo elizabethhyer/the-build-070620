@@ -5,4 +5,5 @@ class Project < ApplicationRecord
     validates :name, presence: true, uniqueness: true
     validates :technique_used, presence:true 
     accepts_nested_attributes_for :notes
+
 end
