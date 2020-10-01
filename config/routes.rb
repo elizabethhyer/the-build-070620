@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   resources :projects do 
-    resources :notes
+    resources :notes, except: [:index]
   end 
   
-  resources :disciplines
+  resources :disciplines, only: [:index, :show]
   
-  resources :users do 
+  resources :users, only: [:new, :create, :show] do 
     resources :projects 
   end 
 
