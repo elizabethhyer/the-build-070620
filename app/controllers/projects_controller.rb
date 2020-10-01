@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
     before_action :set_project, except: [:new, :create, :index]
+    before_action :require_login, except: [:index, :show]
 
     def index
         if params[:user_id]
@@ -10,6 +11,7 @@ class ProjectsController < ApplicationController
     end 
 
     def show
+        @user = @project.notes.user
     end 
 
     def new 

@@ -1,6 +1,4 @@
 search by keyword
-email doesn't validate for uniqueness
-is there a way to ask the user to fill in the missing info after signing in with facebook?
 redirect to login or signup if a user tries to create without being logged in
 
 DO
