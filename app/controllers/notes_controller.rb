@@ -2,6 +2,7 @@ class NotesController < ApplicationController
     before_action :set_project, only: [:show, :new, :edit, :update]
     before_action :set_note, only: [:show, :edit, :update, :destroy]
     before_action :require_login, except: [:show]
+    layout :determine_layout
 
     def show 
     end 
