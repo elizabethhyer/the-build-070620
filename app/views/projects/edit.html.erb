@@ -1,4 +1,4 @@
-<% render partial: "application/errors", locals: {errors: @project.errors} %>
+<% render partial: "application/errors", locals: {errors: @project.errors.full_messages} %>
 
 <h1>Editing <%= @project.name %></h2>
 

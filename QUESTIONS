@@ -1,5 +1,5 @@
 search by keyword
-redirect to login or signup if a user tries to create without being logged in
+errors partial gets rid of messages
 
 DO
 CSS

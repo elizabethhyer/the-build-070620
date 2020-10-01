@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
-    before_action :redirect_if_logged_in
+    before_action :redirect_if_logged_in, except: [:destroy]
 
     def new
-
+        @errors = []
     end 
 
     def create 
@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id 
             redirect_to projects_path
         else
+            @errors = ["Username or password incorrect"]
             render :new 
         end 
     end 

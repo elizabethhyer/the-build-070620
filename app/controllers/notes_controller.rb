@@ -15,7 +15,6 @@ class NotesController < ApplicationController
         if @note.save
             redirect_to project_path(@project)
         else
-            # @errors = @note.errors.full_messages
             render :new 
         end 
     end 
@@ -27,7 +26,6 @@ class NotesController < ApplicationController
         if @note.update(note_params)
             redirect_to project_path(@project)
         else
-            # @errors = @note.errors.full_messages
             render :edit 
         end 
     end 

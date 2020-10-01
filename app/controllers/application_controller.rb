@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     helper_method :current_user
 
     def require_login
-        redirect_to 'login' if !current_user
+        redirect_to '/login' if !current_user
     end 
 
     def redirect_if_logged_in
