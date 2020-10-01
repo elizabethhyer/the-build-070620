@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+    before_action :redirect_if_logged_in
     before_action :require_login, only: [:show]
 
     def new

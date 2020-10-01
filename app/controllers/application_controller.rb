@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
         redirect_to 'login' if !current_user
     end 
 
+    def redirect_if_logged_in
+        redirect_to projects_path if current_user
+    end 
+
     def current_user
         @user = User.find_by(id: session[:user_id])
     end 
