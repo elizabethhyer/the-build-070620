@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
     end 
 
     def create_with_facebook
+        byebug
         user = User.find_or_create_by(username: auth["email"]) do |u|
             u.password = "password"
         end 

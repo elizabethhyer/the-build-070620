@@ -1,14 +1,11 @@
 class NotesController < ApplicationController
-
-    before_action :set_note, only: [:create]
+    before_action :set_project, only: [:show, :new, :edit, :update]
+    before_action :set_note, only: [:show, :edit, :update, :destroy]
 
     def show 
-        set_project
-        @note = Note.find_by(id: params[:id])
     end 
 
     def new 
-        set_project
         @note = @project.notes.build 
     end 
 
@@ -23,13 +20,9 @@ class NotesController < ApplicationController
     end 
 
     def edit 
-        set_project
-        @note = Note.find_by(id: params[:id])
     end 
 
     def update
-        set_project
-        @note = Note.find_by(id: params[:id])
         if @note.update(note_params)
             redirect_to project_path(@project)
         else
@@ -39,7 +32,6 @@ class NotesController < ApplicationController
     end 
 
     def destroy
-        @note = Note.find_by(id: params[:id])
         @note.destroy
         redirect_to projects_path
     end 
@@ -55,8 +47,7 @@ class NotesController < ApplicationController
     end 
 
     def set_note 
-        set_project
-        @note = @project.notes.build(note_params)
+        @note = Note.find_by(id: params[:id])
     end 
 
 end
