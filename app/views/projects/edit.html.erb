@@ -1,3 +1,5 @@
+<% render partial: "application/errors", locals: {errors: @project.errors} %>
+
 <h1>Editing <%= @project.name %></h2>
 
 <%= render 'form' %>

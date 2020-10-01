@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
     end 
 
     def show
-        @user = @project.notes.user
+        @user = @project.notes.user.first
     end 
 
     def new 
@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
         if @project.save
             redirect_to project_path(@project)
         else
-            @errors = @project.errors.full_messages
+            # @errors = @project.errors.full_messages
             render :new 
         end 
     end 
@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
         if @project.update(project_params)
             redirect_to project_path(@project)
         else
-            @errors = @project.errors.full_messages
+            # @errors = @project.errors.full_messages
             render :edit 
         end 
     end 
