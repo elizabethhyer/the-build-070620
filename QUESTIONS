@@ -1,6 +1,10 @@
 search by keyword
 email doesn't validate for uniqueness
+getting a nilclass error on omniauth
+is there a way to ask the user to fill in the missing info after signing in with facebook?
+redirect to login or signup if a user tries to create without being logged in
 
 DO
 CSS
 profile for users with all related projects
+Organize layouts 
