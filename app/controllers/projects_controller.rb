@@ -11,7 +11,6 @@ class ProjectsController < ApplicationController
     end 
 
     def show
-        # @user = @project.notes.user.first
     end 
 
     def new 
