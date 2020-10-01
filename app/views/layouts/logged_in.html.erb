@@ -14,7 +14,10 @@
   <%= link_to "Projects" , projects_path %>
   <%= link_to "Create a Project", new_project_path %>
   <%= link_to "My Projects", user_projects_path(current_user) %>
+  <%= link_to "My Home", user_path(current_user) %>
   <%= link_to "Log out", logout_path, method: :post %>
+  <br>
+  <br>
     <%= yield %>
   </body>
 </html>

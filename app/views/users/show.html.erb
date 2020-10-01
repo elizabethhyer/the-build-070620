@@ -1,0 +1,9 @@
+<h1>Welcome, <%= @user.username %>!</h1>
+
+<br>
+<br>
+
+
+<% @user.notes.each do |n| %>
+    <h3>Your Projects: <%= link_to n.project.name, user_project_path(@user, n) %></h3>
+<% end %>

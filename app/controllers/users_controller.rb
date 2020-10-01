@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :redirect_if_logged_in
+    before_action :redirect_if_logged_in, except: [:show]
     before_action :require_login, only: [:show]
     layout :determine_layout
 
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     end 
 
     def show
-
+        @user = User.find_by(id: params[:id])
     end 
 
     private
