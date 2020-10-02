@@ -7,7 +7,7 @@
 <h4>Email: <%= @user.email %><br><br>
 
 <% @user.notes.each do |n| %>
-    <h4>Projects: <%= link_to n.project.name, user_project_path(@user, n) %></h4>
+    <h4>Projects: <%= link_to n.project.name, user_project_path(@user, n.project) %></h4>
 <% end %>
 
 <br>

@@ -6,20 +6,6 @@ class Project < ApplicationRecord
     validates :technique_used, presence:true 
     accepts_nested_attributes_for :notes
 
-    def self.search(query)
-        if query.present?
-          where('NAME like ?', "%#{query}%")
-        else
-          self.all
-        end
-    end
-
-    def self.desc_projects
-        order('created_at' desc)
-    end 
-
-    def self.asc_projects
-        order('created_at' asc)
-    end 
+    scope :search_by_keyword, -> (query) { where("name LIKE ?", "%" + query + "%") }
 
 end

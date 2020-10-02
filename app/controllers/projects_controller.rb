@@ -5,9 +5,13 @@ class ProjectsController < ApplicationController
     layout :determine_layout
 
     def index
-        if params[:user_id]
+        if params[:user_id] && params[:query]
+            @projects = User.find_by(id: params[:user_id]).projects.distinct.search(params[:query])
+        elsif params[:user_id]
             @nested_route = true  
             @projects = User.find_by(id: params[:user_id]).projects.distinct
+        elsif params[:query]
+            @projects = Project.search_by_keyword(params[:query])
         else 
             @projects = Project.all
         end 
