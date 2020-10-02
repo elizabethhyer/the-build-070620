@@ -1,8 +1,13 @@
+<h1> <%= @project.name %> </h1>
+<br>
+<br>
 
 <% @project.notes.each do |n| %>
-    <h2>Made By: <%= link_to n.user.to_s, user_path(n.user) %></h2>
+    <h3>Made By: <%= link_to n.user.to_s, user_path(n.user) %></h3>
     <p><%= n.user.email %><p><br>
-    <h3>Notes on this project:</h3><br>
+    <h4>Technique Used: <%= @project.technique_used %></h4><br>
+    <h4>Material Used: <%= @project.material_used %></h4><br>
+    <h4>Notes on this project:</h4><br>
     <h4><%= link_to n.title, project_note_path(@project, n) %></h4>
     <p><%= n.content %></p>
 

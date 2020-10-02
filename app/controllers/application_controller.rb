@@ -20,4 +20,11 @@ class ApplicationController < ActionController::Base
         current_user ? "logged_in" : "application"
     end
 
+    def check_profile_owner
+        if current_user.id == session[:user_id]
+        else 
+            redirect_to projects_path
+        end 
+    end 
+
 end
