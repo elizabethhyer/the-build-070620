@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
     before_action :set_project, except: [:new, :create, :index]
     before_action :require_login, except: [:index, :show]
-    before_action :check_project_user, only: [:edit, :update, :delete]
+    before_action :check_project_user, only: [:edit, :update, :destroy]
     layout :determine_layout
 
     def index

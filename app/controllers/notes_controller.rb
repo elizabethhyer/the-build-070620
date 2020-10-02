@@ -2,6 +2,7 @@ class NotesController < ApplicationController
     before_action :set_project, only: [:show, :new, :edit, :update]
     before_action :set_note, only: [:show, :edit, :update, :destroy]
     before_action :require_login, except: [:show]
+    before_action :check_note_user, only: [:edit, :update, :destroy]
     layout :determine_layout
 
     def show 
@@ -48,6 +49,12 @@ class NotesController < ApplicationController
 
     def set_note 
         @note = Note.find_by(id: params[:id])
+    end 
+
+    def check_note_user 
+        if @note.none? { |n| n.user == current_user }
+            redirect_to projects_path
+        end 
     end 
 
 end
