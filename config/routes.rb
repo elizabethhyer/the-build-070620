@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   end 
 
   root 'static#home'
-  get 'about', to: 'static#about'
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
