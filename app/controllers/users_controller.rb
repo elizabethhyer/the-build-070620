@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :redirect_if_logged_in, except: [:show]
+    before_action :redirect_if_logged_in, only: [:new, :create]
     before_action :require_login, except: [:new, :create]
     before_action :check_profile_owner, only: [:edit, :update, :destroy]
     before_action :set_user, except: [:new, :create]
@@ -44,13 +44,13 @@ class UsersController < ApplicationController
         params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)
     end 
 
-
     def set_user
         @user = User.find_by(id: params[:id])
     end 
 
     def check_profile_owner
-        if @user.none? { |u| u.user == current_user }
+        if @user.id == session[:user_id]
+        else 
             redirect_to projects_path
         end 
     end 
