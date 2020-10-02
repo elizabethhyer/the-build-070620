@@ -1,11 +1,10 @@
 module ProjectsHelper
 
-    def welcome_message
-        if '/users/id/projects'
-            "<h1>My Projects</h1>"
+    def welcome_message(route)
+        if route
+            content_tag(:h1, "My Projects")
         else 
-            'projects'
-            "<h1>Looking For Your Next Project?</h1>"
+            content_tag(:h1, "Looking For Your Next Project?")
         end 
     end 
 

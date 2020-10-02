@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
 
     def index
         if params[:user_id]
+            @nested_route = true  
             @projects = User.find_by(id: params[:user_id]).projects.distinct
         else 
             @projects = Project.all
@@ -29,6 +30,9 @@ class ProjectsController < ApplicationController
     end 
 
     def edit
+        if @project.notes.none? { |n| n.user == current_user }
+            redirect_to projects_path
+        end 
     end 
 
     def update 

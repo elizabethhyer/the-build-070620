@@ -1,4 +1,4 @@
-<h1>Looking For Your Next Project?</h1>
+<%= welcome_message(@nested_route) %><br>
 
 <% @projects.each do |p| %>
     <li><%= link_to p.name, project_path(p) %></li>
