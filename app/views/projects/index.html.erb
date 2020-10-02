@@ -1,5 +1,12 @@
 <%= welcome_message(@nested_route) %><br>
 
+<%= form_tag projects_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+
 <% @projects.each do |p| %>
     <li><%= link_to p.name, project_path(p) %></li>
 <% end %>

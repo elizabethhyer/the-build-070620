@@ -6,4 +6,12 @@ class Project < ApplicationRecord
     validates :technique_used, presence:true 
     accepts_nested_attributes_for :notes
 
+    def self.search(query)
+        if query.present?
+          where('NAME like ?', "%#{query}%")
+        else
+          self.all
+        end
+    end
+
 end

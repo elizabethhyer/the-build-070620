@@ -9,3 +9,15 @@
 <% @user.notes.each do |n| %>
     <h4>Projects: <%= link_to n.project.name, user_project_path(@user, n) %></h4>
 <% end %>
+
+<br>
+<br>
+
+
+    <% if current_user == @user %>
+
+    <%= link_to "Edit Profile", edit_user_path(@user) %><br><br>
+
+    <%= button_to "Delete Profile", @user, method: :delete, data: {confirm: "Deleting this profile will permanantly delete all associated information and projects. Are you sure you would like to delete this profile?"} %>
+
+    <% end %>
