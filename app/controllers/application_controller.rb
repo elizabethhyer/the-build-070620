@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
 
     helper_method :current_user
 
+    private
+
     def require_login
         redirect_to '/login' if !current_user
     end 
@@ -16,6 +18,12 @@ class ApplicationController < ActionController::Base
 
     def determine_layout
         current_user ? "logged_in" : "application"
-      end
+    end
+
+    # def check_owner
+    #      @project.notes.first.user == current_user 
+    # end 
+
+    # Checking if note.user == current_user
 
 end

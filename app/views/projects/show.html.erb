@@ -6,12 +6,18 @@
     <h3>Notes on this project:</h3><br>
     <h4><%= link_to n.title, project_note_path(@project, n) %></h4>
     <p><%= n.content %></p>
+
+    <br><br>
+
+    <% if current_user == n.user %>
+
+    <%= link_to "Make a note", new_project_note_url(@project) %><br><br>
+
+    <%= link_to "Edit", edit_project_path(@project) %><br><br>
+
+    <%= button_to "Delete", @project, method: :delete, data: {confirm: "There is no recovery for projects thrown into the ether. Are you sure you would like to delete your project?"} %>
+
 <% end %>
 
-<br><br>
-<%= link_to "Make a note", new_project_note_url(@project) %><br><br>
-
-<%= link_to "Edit", edit_project_path(@project) %><br><br>
-
-<%= button_to "Delete", @project, method: :delete, data: {confirm: "There is no recovery for projects thrown into the ether. Are you sure you would like to delete your project?"} %>
+<% end %>
 

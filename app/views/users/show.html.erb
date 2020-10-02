@@ -1,9 +1,11 @@
-<h1>Welcome, <%= @user.username %>!</h1>
+<h1>Welcome, <%= @user.to_s %>!</h1>
 
 <br>
 <br>
 
+<h4>Your Username: <%= @user.username %></h4><br>
+<h4>Your Email: <%= @user.email %><br><br>
 
 <% @user.notes.each do |n| %>
-    <h3>Your Projects: <%= link_to n.project.name, user_project_path(@user, n) %></h3>
+    <h4>Your Projects: <%= link_to n.project.name, user_project_path(@user, n) %></h4>
 <% end %>

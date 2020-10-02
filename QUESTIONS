@@ -1,6 +1,6 @@
 search by keyword
 welcome message helper not working
-
+only show edit/delete/make a note if current user owns a project/note pair
 
 DO
 CSS
