@@ -20,10 +20,4 @@ class ApplicationController < ActionController::Base
         current_user ? "logged_in" : "application"
     end
 
-    # def check_owner
-    #      @project.notes.first.user == current_user 
-    # end 
-
-    # Checking if note.user == current_user
-
 end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   
   resources :disciplines, only: [:index, :show]
   
-  resources :users, only: [:new, :create, :show] do 
+  resources :users, except: [:index] do 
     resources :projects 
   end 
 
