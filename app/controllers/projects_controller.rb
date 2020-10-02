@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
     before_action :set_project, except: [:new, :create, :index]
     before_action :require_login, except: [:index, :show]
+    before_action :check_project_user, only: [:edit, :update, :delete]
     layout :determine_layout
 
     def index
@@ -30,9 +31,6 @@ class ProjectsController < ApplicationController
     end 
 
     def edit
-        if @project.notes.none? { |n| n.user == current_user }
-            redirect_to projects_path
-        end 
     end 
 
     def update 
@@ -56,6 +54,12 @@ class ProjectsController < ApplicationController
 
     def set_project
         @project = Project.find_by(id: params[:id])
+    end 
+
+    def check_project_user 
+        if @project.notes.none? { |n| n.user == current_user }
+            redirect_to projects_path
+        end 
     end 
 
 end
