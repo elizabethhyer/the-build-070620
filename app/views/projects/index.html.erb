@@ -1,5 +1,7 @@
 <%= welcome_message(@nested_route) %><br>
 
+<%= f.collection_select :project_id, Project.all, :id, :name %><br><br>
+
 <%= form_tag projects_path, method: :get do %>
   <p>
     <%= text_field_tag :query, params[:query] %>

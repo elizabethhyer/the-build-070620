@@ -14,4 +14,12 @@ class Project < ApplicationRecord
         end
     end
 
+    def self.desc_projects
+        order('created_at' desc)
+    end 
+
+    def self.asc_projects
+        order('created_at' asc)
+    end 
+
 end
