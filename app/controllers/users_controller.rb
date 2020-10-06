@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     end 
 
     def show
+        @projects = @user.projects.distinct
     end 
 
     def edit
@@ -34,6 +35,10 @@ class UsersController < ApplicationController
     end 
 
     def destroy
+        @user.notes.each do |n| 
+            n.project.destroy 
+            n.destroy 
+        end 
         @user.destroy
         redirect_to '/'
     end 

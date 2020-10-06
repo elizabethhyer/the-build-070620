@@ -6,8 +6,8 @@
 <h4>Username: <%= @user.username %></h4><br>
 <h4>Email: <%= @user.email %><br><br>
 
-<% @user.notes.each do |n| %>
-    <h4>Projects: <%= link_to n.project.name, user_project_path(@user, n.project) %></h4>
+<% @projects.each do |p| %>
+    <h4>Projects: <%= link_to p.name, user_project_path(@user, p) %></h4>
 <% end %>
 
 <br>

@@ -2,18 +2,20 @@
 <br>
 <br>
 
-<% @project.notes.each do |n| %>
-    <h3>Made By: <%= link_to n.user.to_s, user_path(n.user) %></h3>
-    <p><%= n.user.email %><p><br>
+ <h3>Made By: <%= link_to @creator.to_s, user_path(@creator) %></h3>
+    <p><%= @creator.email %><p><br>
     <h4>Technique Used: <%= @project.technique_used %></h4><br>
     <h4>Material Used: <%= @project.material_used %></h4><br>
     <h4>Notes on this project:</h4><br>
+
+<% @project.notes.each do |n| %>
     <h4><%= link_to n.title, project_note_path(@project, n) %></h4>
     <p><%= n.content %></p>
 
     <br><br>
+<% end %>
 
-    <% if current_user == n.user %>
+<% if current_user == @creator %>
 
     <%= link_to "Make a note", new_project_note_url(@project) %><br><br>
 
@@ -21,7 +23,4 @@
 
     <%= button_to "Delete", @project, method: :delete, data: {confirm: "There is no recovery for projects thrown into the ether. Are you sure you would like to delete your project?"} %>
 
-    <% end %>
-
 <% end %>
-

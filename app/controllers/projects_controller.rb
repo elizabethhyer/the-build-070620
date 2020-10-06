@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
     end 
 
     def show
+        @creator = @project.notes.first.user
     end 
 
     def new 
