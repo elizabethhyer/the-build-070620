@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
     before_action :redirect_if_logged_in, except: [:destroy]
     layout :determine_layout
-    
+
     def new
     end 
 
@@ -17,14 +17,20 @@ class SessionsController < ApplicationController
     end 
 
     def create_with_facebook
-        user = User.find_or_create_by(username: auth["email"]) do |u|
-            u.first_name = auth["name"].split(" ")[0]
-            u.last_name = auth["name"].split(" ")[1]
+        user = User.find_or_create_by(email: auth["info"]["email"]) do |u|
+            u.username = auth["info"]["name"]
+            u.first_name = auth["info"]["name"].split(" ")[0]
+            u.last_name = auth["info"]["name"].split(" ").last
+            # byebug
             u.password = "password"
         end 
-        user.save
+        if user.save
         session[:user_id] = user.id
         redirect_to projects_path
+        else 
+            @user = User.new
+            render 'users/new'
+        end 
     end 
 
     def destroy
