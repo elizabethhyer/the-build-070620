@@ -6,10 +6,11 @@ class ProjectsController < ApplicationController
 
     def index
         if params[:user_id] && params[:query]
-            @projects = User.find_by(id: params[:user_id]).projects.distinct.search(params[:query])
+            @projects = User.find_by(id: params[:user_id]).projects.distinct.search_by_keyword(params[:query])
+            @user = User.find_by(id: params[:user_id])
         elsif params[:user_id]
-            @nested_route = true  
             @projects = User.find_by(id: params[:user_id]).projects.distinct
+            @user = User.find_by(id: params[:user_id])
         elsif params[:query]
             @projects = Project.search_by_keyword(params[:query])
         else 

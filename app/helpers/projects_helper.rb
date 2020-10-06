@@ -8,4 +8,12 @@ module ProjectsHelper
         end 
     end 
 
+    def user_projects_search(user)
+        if user
+            user_projects_path(user)
+        else 
+            projects_path
+        end 
+    end 
+
 end
