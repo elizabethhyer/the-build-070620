@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :notes, except: [:index]
   end 
   
-  resources :disciplines, only: [:index, :show]
+  resources :disciplines, only: [:index, :show, :new, :create]
   
   resources :users, except: [:index] do 
     resources :projects 

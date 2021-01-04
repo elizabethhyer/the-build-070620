@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
     before_action :redirect_if_logged_in, only: [:new, :create]
     before_action :require_login, except: [:new, :create]
-    before_action :check_profile_owner, only: [:edit, :update, :destroy]
     before_action :set_user, except: [:new, :create]
+    before_action :check_profile_owner, only: [:edit, :update, :destroy]
     layout :determine_layout
 
     def new
@@ -35,10 +35,6 @@ class UsersController < ApplicationController
     end 
 
     def destroy
-        @user.notes.each do |n| 
-            n.project.destroy 
-            n.destroy 
-        end 
         @user.destroy
         redirect_to '/'
     end 
@@ -54,9 +50,11 @@ class UsersController < ApplicationController
     end 
 
     def check_profile_owner
-        if @user.id == session[:user_id]
-        else 
+        # byebug
+        if @user.id != session[:user_id]
             redirect_to projects_path
+        # else 
+            # redirect_to projects_path
         end 
     end 
 

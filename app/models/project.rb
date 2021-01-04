@@ -9,3 +9,4 @@ class Project < ApplicationRecord
     scope :search_by_keyword, -> (query) { where("name LIKE ?", "%" + query + "%") }
 
 end
+
